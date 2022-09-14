@@ -1,13 +1,12 @@
-import './App.css';
-import Users from "./components/users/Users";
+import Simpsons from "./components/simpsons/Simpsons";
 
 function App() {
 
 
 
     return (<div>
-        <h2>app component header</h2>
-        <Users/>
+
+        <Simpsons/>
 
     </div>);
 }
