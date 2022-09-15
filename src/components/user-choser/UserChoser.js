@@ -16,9 +16,7 @@ export default function UserChoser() {
     const decrement = () => {
         id--;
         setId(id);
-
     }
-
 
     useEffect(() => {
         console.log('effect');
