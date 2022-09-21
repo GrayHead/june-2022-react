@@ -1,8 +1,8 @@
-export default function User(props) {
-    let {item: user} = props;
+export default function User({user}) {
+
 
     return (<div>
-        <h2>{user.id} - {user.name} </h2>
-        <p>{user.address.city} <br/> {user.email}</p>
+        <h2>{user.id} - {user.name} {user.surname} </h2>
+        <p>{user.email}</p>
     </div>);
 }

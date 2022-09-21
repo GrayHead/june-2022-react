@@ -1,23 +1,24 @@
+import {useEffect, useState} from "react";
+
+import {userService} from "../../services";
+import {UserForm} from "../userForm/UserForm";
 import User from "../user/User";
-import {useState} from "react";
 
+const Users = () => {
+    const [users, setUsers] = useState([]);
 
-export default function Users() {
-    let [users, setUsers] = useState([]); // [[],set()]
-
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(value => value.json())
-        .then(value => {
-            setUsers(value);
-        });
-
-    return (<div>
-            {users.map((user, index) => (<User item={user} key={index}/>))}
-{/*/asdasdasdas*/}
-{/*            asjhdgahsgdjas*/}
-
+    useEffect(() => {
+        userService.getAll().then(({data}) => setUsers(data))
+    }, [])
+    return (
+        <div>
+            <div><UserForm setUsers={setUsers}/></div>
+            <div>
+                {
+                    users.map(user => <User key={user.id} user={user}/>)
+                }
+            </div>
         </div>
-
-
-    );
+    )
 }
+export {Users};
