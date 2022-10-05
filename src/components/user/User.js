@@ -1,8 +1,12 @@
-export default function User(props) {
-    let {item: user} = props;
+import {Link} from "react-router-dom";
 
-    return (<div>
-        <h2>{user.id} - {user.name} </h2>
-        <p>{user.address.city} <br/> {user.email}</p>
-    </div>);
+const User = ({user}) => {
+
+    return (
+        <div>
+            <div>{user.name} -- {user.email}</div>
+            <span><Link to={user.id.toString()}>Single User</Link></span>
+        </div>
+    )
 }
+export {User};

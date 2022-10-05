@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav__menu {
+    width: 100%;
+    height: 50px;
+    background: burlywood;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav__menu a{
+    color: red;
+    text-decoration: none;
+}

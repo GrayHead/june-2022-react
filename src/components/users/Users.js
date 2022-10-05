@@ -1,23 +1,26 @@
-import User from "../user/User";
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 
+import {usersService} from "../../services";
+import {LOAD_USERS} from "../../redux";
+import {User} from "../user/User";
 
-export default function Users() {
-    let [users, setUsers] = useState([]); // [[],set()]
+const Users = () => {
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(value => value.json())
-        .then(value => {
-            setUsers(value);
-        });
+    const {users} = useSelector(state => state.usersReducer);
 
-    return (<div>
-            {users.map((user, index) => (<User item={user} key={index}/>))}
-{/*/asdasdasdas*/}
-{/*            asjhdgahsgdjas*/}
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        usersService.getAll().then(({data}) => dispatch({type:LOAD_USERS, payload: data}))
+    },[])
+
+    return (
+        <div>
+            {
+                users.map(user => <User key={user.id} user={user}/>)
+            }
         </div>
-
-
-    );
+    )
 }
+export {Users};
